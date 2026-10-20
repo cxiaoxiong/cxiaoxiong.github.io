@@ -31,7 +31,7 @@
       <span class="eyebrow">软件 · v0.1.0</span>
       <h1>北冥有鱼 · AI 自动改卷</h1>
       <p class="lead">在电脑上打开阅卷网页，框住学生的作答，AI 按你写的评分细则打分、写出理由，再替你填分、提交，一份接一份地改。</p>
-      <p class="muted">软件名称与版本号：<span class="tbd">正式名称、发布版本号</span></p>
+      <p class="muted">软件里显示的名字是「AI改卷」。当前版本 v0.1.0，还没有正式发布。</p>
       <div class="hero-actions">
         <a class="btn" href="#download">下载</a>
         <a class="btn ghost" href="#how">怎么用</a>
@@ -94,7 +94,7 @@
         </div>
         <div class="card feature">
           <h3><span class="dot" aria-hidden="true">⑨</span>适用场景</h3>
-          <p>阅卷网页上的主观题，比如语文的诗歌鉴赏、简答题。目前主要在智学网上使用和测试，其他阅卷平台 <span class="tbd">是否验证过</span>。</p>
+          <p>阅卷网页上的主观题，比如语文的诗歌鉴赏、简答题。目前在智学网上使用和测试过，其他阅卷平台还没有验证。</p>
         </div>
       </div>
     </div>
@@ -131,10 +131,10 @@
         <p>第一次打开有新手引导，一步步带你做完。完整说明见软件里的「使用帮助 → 打开使用手册」。</p>
       </div>
       <ol class="steps">
-        <li><strong>连接 AI</strong><p>选服务商（默认 DeepSeek），粘贴自己的 API Key，点「测试连接」。Key 保存在系统钥匙串里。</p></li>
+        <li><strong>连接 AI</strong><p>选服务商（默认 DeepSeek），粘贴自己的 API Key，点「测试连接」。Key 保存在系统的密码管理里，不写进文件。</p></li>
         <li><strong>设置试卷</strong><p>新建题目，填年级、学科、满分、打分步长、分数框个数，以及本次要改几份。</p></li>
         <li><strong>框选区域</strong><p>打开阅卷网页，把红框拖到学生作答上、绿框拖到分数框上、蓝框拖到提交按钮上。</p></li>
-        <li><strong>评分规则</strong><p>粘贴题目材料和评分细则，可加打分示例和参考图；「检查规则」会找出前后矛盾、说得含糊的地方。</p></li>
+        <li><strong>评分规则</strong><p>粘贴题目材料和评分细则，可加打分示例和参考图；「检查规则」会找出前后矛盾、说得含糊的地方，「优化评分细则」再据此起草一份细则，你核对后才采用。</p></li>
         <li><strong>试改一份</strong><p>只改当前这一份，分数填进网页但不提交。看 AI 认的字、理由和得分点对不对，不满意就改细则。</p></li>
         <li><strong>改分提交</strong><p>在「老师定分」里改成你认为对的分数，点「改分提交」，网页换到下一份。</p></li>
         <li><strong>开始改卷</strong><p>点「开始改卷」或按快捷键，软件一份一份地改，改够份数自己停，并弹出这一批的小结。</p></li>
@@ -150,27 +150,23 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="install-title">安装</h2>
-        <p>安装包形式：<span class="tbd">安装包还是压缩包、文件名</span>。下面是当前版本（v0.1.0）的运行方式。</p>
+        <p>安装包正在准备，发布后在下方「下载」提供。拿到安装包后这样安装，不需要另装 Python 或其他工具。</p>
       </div>
       <div class="grid two">
         <div class="card">
-          <h3>1. 准备软件和 uv</h3>
-          <p class="muted">把下载的软件文件夹放到自己电脑上。再装 uv（一个管理 Python 的小工具）。</p>
-          <p>Mac：打开「终端」，粘贴后回车</p>
-          <pre><code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></pre>
-          <p>Windows：打开 PowerShell，粘贴后回车</p>
-          <pre><code>powershell -c "irm https://astral.sh/uv/install.ps1 | iex"</code></pre>
+          <h3>Mac</h3>
+          <p>解压 <code>AI改卷.app.zip</code>，把 <code>AI改卷.app</code> 拖进「应用程序」，双击打开。</p>
+          <p class="muted">第一次打开如果被系统拦住，到「系统设置 → 隐私与安全性」里确认打开。</p>
         </div>
         <div class="card">
-          <h3>2. 打开软件</h3>
-          <p class="muted">在终端里进入软件文件夹（输入 <code>cd </code>，把文件夹拖进终端窗口，回车），再运行：</p>
-          <pre><code>uv run python -m ai_grader.main</code></pre>
-          <p class="muted">第一次会自动下载需要的东西，要等一两分钟。以后每次都用这一行打开。</p>
+          <h3>Windows</h3>
+          <p>解压 <code>AI改卷.dist.zip</code>，保留整个 <code>AI改卷.dist</code> 文件夹，打开其中的 <code>AI改卷.exe</code>。</p>
+          <p class="muted">不要只把 exe 单独拖出来，旁边的程序文件和资源要一起留着。第一次打开时，系统可能提示这是来源未知的应用。</p>
         </div>
       </div>
       <div class="card" style="margin-top:16px">
         <h3>Mac 需要三项权限</h3>
-        <p class="muted">在「系统设置 → 隐私与安全性」里，给启动软件的程序（一般是「终端」）打开下面三项，<strong>然后完全退出终端（⌘Q）再重新打开</strong>。请从 Mac 自带的「终端」启动。</p>
+        <p class="muted">在「系统设置 → 隐私与安全性」里，给「AI改卷」打开下面三项，<strong>然后完全退出 AI改卷（⌘Q）再重新打开</strong>，权限才生效。</p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>权限</th><th>用来做什么</th></tr></thead>
@@ -194,9 +190,9 @@
       <div class="table-wrap">
         <table>
           <tbody>
-            <tr><th scope="row">macOS</th><td>支持。最低版本：<span class="tbd">macOS 版本</span></td></tr>
-            <tr><th scope="row">Windows</th><td>支持，已在 Windows 真机上测试（含显示缩放）。最低版本：<span class="tbd">Windows 版本</span></td></tr>
-            <tr><th scope="row">AI 服务</th><td>需要联网，并自备一家大模型服务商的 API Key（默认 DeepSeek），模型要能识图。调用费用由你在服务商那里支付。支持的服务商：<span class="tbd">服务商清单</span></td></tr>
+            <tr><th scope="row">macOS</th><td>Apple 芯片（M 系列）的 Mac，macOS 14 或更新版本。</td></tr>
+            <tr><th scope="row">Windows</th><td>64 位 Windows 10（1809 或更新）和 Windows 11，已在 Windows 真机上测试（含显示缩放）。</td></tr>
+            <tr><th scope="row">AI 服务</th><td>需要联网，并自备一家大模型服务商的 API Key（默认 DeepSeek），模型要能识图。调用费用由你在服务商那里支付。支持的服务商：DeepSeek、通义千问、字节豆包、智谱、月之暗面 Kimi、MiniMax、小米 MiMo、OpenAI、Gemini、Claude，也可以填中转平台的地址。</td></tr>
             <tr><th scope="row">阅卷网页</th><td>浏览器缩放保持 100%，不要全屏；改卷时网页所在的屏幕上不能有别的窗口挡住红框。</td></tr>
           </tbody>
         </table>
@@ -209,11 +205,11 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="changelog-title">版本与更新日志</h2>
-        <p>当前版本 v0.1.0。<span class="tbd">发布日期；下面的日志是按开发记录整理的草稿，需要审定</span></p>
+        <p>当前版本 v0.1.0，还没有正式发布。下面是开发过程的记录，正式发布后从第一个发布版本开始记。</p>
       </div>
       <ol class="log">
         <li><time datetime="2026-10-20">2026-10-20</time>
-          <ul><li>新增本题得分统计：平均分、最高最低分、分数分布图</li><li>打分步长支持 0.25 分</li><li>改过卷的题参数自动锁住，防止误改</li></ul></li>
+          <ul><li>评分规则页新增「优化评分细则」：结合「检查规则」找出的问题起草细则，老师核对后才采用</li><li>新增本题得分统计：平均分、最高最低分、分数分布图</li><li>打分步长支持 0.25 分</li><li>改过卷的题参数自动锁住，防止误改</li><li>改卷时工作台保持显示，停在改卷详情</li></ul></li>
         <li><time datetime="2026-10-17">2026-10-17</time>
           <ul><li>Windows 真机测试通过，支持显示缩放下的截图和点击</li></ul></li>
         <li><time datetime="2026-10-16">2026-10-16</time>
@@ -235,24 +231,18 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="download-title">下载</h2>
-        <p>安装包放在第三方网盘，本站不托管安装包。下载后请核对文件大小和 SHA256。</p>
+        <p>安装包放在第三方网盘，本站不托管安装包。</p>
       </div>
       <div class="download">
         <div class="card">
-          <dl class="meta">
-            <dt>版本</dt><dd>v0.1.0 <span class="tbd">发布版本号</span></dd>
-            <dt>文件</dt><dd><span class="tbd">文件名</span></dd>
-            <dt>大小</dt><dd><span class="tbd">文件大小</span></dd>
-            <dt>SHA256</dt><dd><code><span class="tbd">校验值</span></code></dd>
-            <dt>提取码</dt><dd><span class="tbd">网盘提取码</span></dd>
-          </dl>
+          <p><strong>安装包准备中。</strong>发布后会在这里给出 Mac 和 Windows 的网盘链接、版本号、文件大小和 SHA256 校验值，下载后请核对。</p>
           <div class="hero-actions">
-            <a class="btn is-disabled" aria-disabled="true" role="link">网盘下载（链接待提供）</a>
-            <a class="btn ghost is-disabled" aria-disabled="true" role="link">备用网盘（链接待提供）</a>
+            <a class="btn is-disabled" aria-disabled="true" role="link">网盘下载（准备中）</a>
+            <a class="btn ghost is-disabled" aria-disabled="true" role="link">备用网盘（准备中）</a>
           </div>
         </div>
         <div class="note">
-          <p><strong>免费版与正式版</strong>：<span class="tbd">是否在网站上说明</span></p>
+          <p><strong>免费版</strong>：软件提供免费版，下载后可以直接试用。</p>
           <p class="muted">本站不提供购买、注册或登录。</p>
         </div>
       </div>
@@ -266,7 +256,7 @@
       <div class="note warn">
         <ul>
           <li>截图只存在你自己的电脑上；只有红框里的作答会发给你选的 AI 服务商。<strong>不要把学生姓名框进红框。</strong></li>
-          <li>API Key 保存在系统钥匙串里，不写进文件。</li>
+          <li>API Key 保存在系统的密码管理里（Mac 钥匙串、Windows 凭据管理器），不写进文件。</li>
           <li>AI 给的分数仅供参考，需要老师复核；标「需复核」的请到阅卷网页的回评里核对。删掉软件里的记录不会改动已经提交到网页上的分数。</li>
           <li>请遵守学校和阅卷平台关于使用辅助工具的规定。</li>
         </ul>
@@ -296,11 +286,11 @@
       </details>
       <details>
         <summary>快捷键没反应？</summary>
-        <p>Mac 要给终端「输入监控」权限，给完要完全退出终端再打开。快捷键可以在「系统设置 → 快捷键」里改。</p>
+        <p>Mac 要给 AI改卷「输入监控」权限，给完要完全退出 AI改卷 再打开。快捷键可以在软件的「系统设置 → 快捷键」里改。</p>
       </details>
       <details>
         <summary>数据存在哪里？换电脑怎么办？</summary>
-        <p>Mac 在 <code>~/Library/Application Support/AI改卷/</code>（记录、截图、设置），换电脑时把这个文件夹拷过去就行；API Key 在系统钥匙串里，要重新粘贴。Windows：<span class="tbd">数据目录</span></p>
+        <p>Mac 在 <code>~/Library/Application Support/AI改卷/</code>（记录、截图、设置），换电脑时把这个文件夹拷过去就行；API Key 在系统钥匙串里，要重新粘贴。Windows 在 <code>%LOCALAPPDATA%\AI改卷\</code>（一般是 <code>C:\Users\用户名\AppData\Local\AI改卷\</code>），同样整个拷过去；API Key 在 Windows 凭据管理器里，也要重新粘贴。</p>
       </details>
       <div class="card" style="margin-top:20px">
         <h3>联系方式</h3>
