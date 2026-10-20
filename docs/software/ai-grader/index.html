@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北冥有鱼 · AI 自动改卷 · 介绍与下载</title>
+<meta name="description" content="北冥有鱼 AI 自动改卷：框住阅卷网页上学生的作答，AI 按评分细则打分，再替老师填分、提交。支持 Mac 和 Windows。">
+<meta property="og:title" content="北冥有鱼 · AI 自动改卷">
+<meta property="og:description" content="AI 按你的评分细则改主观题，替你填分、提交。">
+<meta property="og:image" content="/software/ai-grader/img/detail.webp">
+<meta name="theme-color" content="#6450d6">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="北冥有鱼 首页"><img src="/assets/logo.svg" alt="" width="32" height="32">北冥有鱼</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/yuwen/">语文学习</a>
+      <a href="/software/" aria-current="page">软件</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 1. 名称与一句话介绍 -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">软件 · v0.1.0</span>
+      <h1>北冥有鱼 · AI 自动改卷</h1>
+      <p class="lead">在电脑上打开阅卷网页，框住学生的作答，AI 按你写的评分细则打分、写出理由，再替你填分、提交，一份接一份地改。</p>
+      <p class="muted">软件名称与版本号：<span class="tbd">正式名称、发布版本号</span></p>
+      <div class="hero-actions">
+        <a class="btn" href="#download">下载</a>
+        <a class="btn ghost" href="#how">怎么用</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <ul class="toc" aria-label="本页目录">
+      <li><a href="#features">功能</a></li>
+      <li><a href="#shots">界面</a></li>
+      <li><a href="#how">使用流程</a></li>
+      <li><a href="#install">安装</a></li>
+      <li><a href="#system">系统支持</a></li>
+      <li><a href="#changelog">更新日志</a></li>
+      <li><a href="#download">下载</a></li>
+      <li><a href="#faq">常见问题</a></li>
+    </ul>
+  </div>
+
+  <!-- 2. 核心功能与适用场景 -->
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="features-title">能做什么</h2>
+        <p>软件一份一份地改：截图 → AI 评分 → 填分提交 → 等网页换到下一份，改够你设的份数就停。</p>
+      </div>
+      <div class="grid three">
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">①</span>截图评分</h3>
+          <p>截下红框里学生的作答，连同你写的评分细则发给 AI（默认 DeepSeek）。AI 认出学生写的字，按细则逐个得分点打分并写出理由。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">②</span>一评二评</h3>
+          <p>同一份默认评两次再合成一个分数，合成方式可选平均、中位、最低、最高。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">③</span>替你填分、提交</h3>
+          <p>模拟鼠标键盘，点网页上的分数框、输入分数、点提交按钮；也可以设成只填分、你自己提交。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">④</span>拿不准就停</h3>
+          <p>网页没换页、评分时页面变了、AI 出错，都会停下或重改这一份，并说明原因。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">⑤</span>标出需复核</h3>
+          <p>两轮分数差得多、认出的字不一样、AI 引用的话对不上，就标黄「需复核」，改完集中到「复核与异常」里看。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">⑥</span>先试改，再开始</h3>
+          <p>「试改一份」只填分不提交，看 AI 认的字和理由对不对；典型作答可以一键收进打分示例，后面的评分会参考。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">⑦</span>记录与统计</h3>
+          <p>每一份的截图、分数、各轮评析都留在本机，可筛选、导出 Excel；本题得分统计有平均分、最高最低分和分数分布图。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">⑧</span>断点续改</h3>
+          <p>中途停下没关系，「已改数量」记着份数，下次接着改。改卷时可以收成一个置顶小窗。</p>
+        </div>
+        <div class="card feature">
+          <h3><span class="dot" aria-hidden="true">⑨</span>适用场景</h3>
+          <p>阅卷网页上的主观题，比如语文的诗歌鉴赏、简答题。目前主要在智学网上使用和测试，其他阅卷平台 <span class="tbd">是否验证过</span>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 界面截图 -->
+  <section class="section" id="shots" aria-labelledby="shots-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="shots-title">软件界面</h2>
+        <p>截图用的是演示数据（「示例考试」），不含真实学生的作答。点图片看大图。</p>
+      </div>
+      <div class="shots">
+        <figure class="wide"><a href="img/home.webp"><img src="img/home.webp" alt="首页：五步设置进度、改卷参数、AI 评分设置和改卷进度" width="1200" height="780" loading="lazy"></a><figcaption>首页：五步设置都打勾就能开始改卷</figcaption></figure>
+        <figure><a href="img/detail.webp"><img src="img/detail.webp" alt="改卷详情：得分点表格和 AI 评分过程" width="1200" height="780" loading="lazy"></a><figcaption>改卷详情：每个得分点各轮给了几分，以及 AI 的评析</figcaption></figure>
+        <figure><a href="img/sheet.webp"><img src="img/sheet.webp" alt="答题卡设置：作答区域、分数框、提交按钮三个标记框" width="1200" height="780" loading="lazy"></a><figcaption>答题卡设置：红框框作答、绿框是分数框、蓝框是提交按钮</figcaption></figure>
+        <figure><a href="img/rules.webp"><img src="img/rules.webp" alt="评分规则：题目材料、评分细则、打分示例、其他要求" width="1200" height="780" loading="lazy"></a><figcaption>评分规则：直接粘贴阅卷组的细则</figcaption></figure>
+        <figure><a href="img/question.webp"><img src="img/question.webp" alt="题目设置：考试、题号、满分、打分步长" width="1200" height="780" loading="lazy"></a><figcaption>题目设置：一道题一套参数和记录</figcaption></figure>
+        <figure><a href="img/ai.webp"><img src="img/ai.webp" alt="AI 配置：服务商、API Key、模型名称、测试连接" width="1200" height="780" loading="lazy"></a><figcaption>AI 配置：选服务商、粘贴自己的 API Key</figcaption></figure>
+        <figure><a href="img/guide.webp"><img src="img/guide.webp" alt="新手引导：页面顶部的横幅写着这一步做什么、还差什么" width="1200" height="780" loading="lazy"></a><figcaption>新手引导：每一步告诉你还差什么</figcaption></figure>
+      </div>
+      <div class="shots small">
+        <figure><a href="img/mini.webp"><img src="img/mini.webp" alt="改卷小窗：进度、这一份的分数、停止按钮和 AI 评分过程" width="360" height="731" loading="lazy"></a><figcaption>改卷时的置顶小窗</figcaption></figure>
+        <figure><a href="img/stats.webp"><img src="img/stats.webp" alt="本题得分统计：已改份数、平均分、最高分、最低分和分数分布" width="484" height="422" loading="lazy"></a><figcaption>本题得分统计</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4a. 使用流程 -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="how-title">使用流程</h2>
+        <p>第一次打开有新手引导，一步步带你做完。完整说明见软件里的「使用帮助 → 打开使用手册」。</p>
+      </div>
+      <ol class="steps">
+        <li><strong>连接 AI</strong><p>选服务商（默认 DeepSeek），粘贴自己的 API Key，点「测试连接」。Key 保存在系统钥匙串里。</p></li>
+        <li><strong>设置试卷</strong><p>新建题目，填年级、学科、满分、打分步长、分数框个数，以及本次要改几份。</p></li>
+        <li><strong>框选区域</strong><p>打开阅卷网页，把红框拖到学生作答上、绿框拖到分数框上、蓝框拖到提交按钮上。</p></li>
+        <li><strong>评分规则</strong><p>粘贴题目材料和评分细则，可加打分示例和参考图；「检查规则」会找出前后矛盾、说得含糊的地方。</p></li>
+        <li><strong>试改一份</strong><p>只改当前这一份，分数填进网页但不提交。看 AI 认的字、理由和得分点对不对，不满意就改细则。</p></li>
+        <li><strong>改分提交</strong><p>在「老师定分」里改成你认为对的分数，点「改分提交」，网页换到下一份。</p></li>
+        <li><strong>开始改卷</strong><p>点「开始改卷」或按快捷键，软件一份一份地改，改够份数自己停，并弹出这一批的小结。</p></li>
+      </ol>
+      <div class="note warn" style="margin-top:16px">
+        <p><strong>改卷时别动鼠标键盘、别切换窗口</strong>：软件在模拟鼠标键盘。要停就按快捷键（Mac 默认 ⌃⌥Q，Windows 默认 Alt+Q）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b. 安装教程 -->
+  <section class="section" id="install" aria-labelledby="install-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="install-title">安装</h2>
+        <p>安装包形式：<span class="tbd">安装包还是压缩包、文件名</span>。下面是当前版本（v0.1.0）的运行方式。</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>1. 准备软件和 uv</h3>
+          <p class="muted">把下载的软件文件夹放到自己电脑上。再装 uv（一个管理 Python 的小工具）。</p>
+          <p>Mac：打开「终端」，粘贴后回车</p>
+          <pre><code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></pre>
+          <p>Windows：打开 PowerShell，粘贴后回车</p>
+          <pre><code>powershell -c "irm https://astral.sh/uv/install.ps1 | iex"</code></pre>
+        </div>
+        <div class="card">
+          <h3>2. 打开软件</h3>
+          <p class="muted">在终端里进入软件文件夹（输入 <code>cd </code>，把文件夹拖进终端窗口，回车），再运行：</p>
+          <pre><code>uv run python -m ai_grader.main</code></pre>
+          <p class="muted">第一次会自动下载需要的东西，要等一两分钟。以后每次都用这一行打开。</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Mac 需要三项权限</h3>
+        <p class="muted">在「系统设置 → 隐私与安全性」里，给启动软件的程序（一般是「终端」）打开下面三项，<strong>然后完全退出终端（⌘Q）再重新打开</strong>。请从 Mac 自带的「终端」启动。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>权限</th><th>用来做什么</th></tr></thead>
+            <tbody>
+              <tr><td>屏幕录制</td><td>截学生的作答</td></tr>
+              <tr><td>辅助功能</td><td>点分数框、输入分数、点提交</td></tr>
+              <tr><td>输入监控</td><td>全局快捷键（第一次按快捷键时系统会问）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 系统支持 -->
+  <section class="section" id="system" aria-labelledby="system-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="system-title">系统支持</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">macOS</th><td>支持。最低版本：<span class="tbd">macOS 版本</span></td></tr>
+            <tr><th scope="row">Windows</th><td>支持，已在 Windows 真机上测试（含显示缩放）。最低版本：<span class="tbd">Windows 版本</span></td></tr>
+            <tr><th scope="row">AI 服务</th><td>需要联网，并自备一家大模型服务商的 API Key（默认 DeepSeek），模型要能识图。调用费用由你在服务商那里支付。支持的服务商：<span class="tbd">服务商清单</span></td></tr>
+            <tr><th scope="row">阅卷网页</th><td>浏览器缩放保持 100%，不要全屏；改卷时网页所在的屏幕上不能有别的窗口挡住红框。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 版本与更新日志 -->
+  <section class="section" id="changelog" aria-labelledby="changelog-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="changelog-title">版本与更新日志</h2>
+        <p>当前版本 v0.1.0。<span class="tbd">发布日期；下面的日志是按开发记录整理的草稿，需要审定</span></p>
+      </div>
+      <ol class="log">
+        <li><time datetime="2026-10-20">2026-10-20</time>
+          <ul><li>新增本题得分统计：平均分、最高最低分、分数分布图</li><li>打分步长支持 0.25 分</li><li>改过卷的题参数自动锁住，防止误改</li></ul></li>
+        <li><time datetime="2026-10-17">2026-10-17</time>
+          <ul><li>Windows 真机测试通过，支持显示缩放下的截图和点击</li></ul></li>
+        <li><time datetime="2026-10-16">2026-10-16</time>
+          <ul><li>「AI 评分过程」边写边显示</li><li>新增新手引导和使用手册（可导出 PDF）</li><li>AI 配置：服务商图标、一键粘贴 Key、去官网申请 Key</li></ul></li>
+        <li><time datetime="2026-10-14">2026-10-14</time>
+          <ul><li>识别核对：两轮认出的作答对不上、看不清、引用对不上时标「需复核」</li><li>试改一份、收进打分示例（高 中 低 正 错）</li><li>改卷小窗下方显示改卷详情</li></ul></li>
+        <li><time datetime="2026-10-13">2026-10-13</time>
+          <ul><li>界面调整：通栏顶栏、侧栏可以换到右边</li><li>提交后核对网页是否换页，模型接口出错时停下并说明原因</li></ul></li>
+        <li><time datetime="2026-10-12">2026-10-12</time>
+          <ul><li>图形界面：工作台 + 改卷小窗、三个标记框</li></ul></li>
+        <li><time datetime="2026-10-11">2026-10-11</time>
+          <ul><li>开始开发：模型接入、多评合成、导出 Excel</li></ul></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7. 下载 -->
+  <section class="section" id="download" aria-labelledby="download-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="download-title">下载</h2>
+        <p>安装包放在第三方网盘，本站不托管安装包。下载后请核对文件大小和 SHA256。</p>
+      </div>
+      <div class="download">
+        <div class="card">
+          <dl class="meta">
+            <dt>版本</dt><dd>v0.1.0 <span class="tbd">发布版本号</span></dd>
+            <dt>文件</dt><dd><span class="tbd">文件名</span></dd>
+            <dt>大小</dt><dd><span class="tbd">文件大小</span></dd>
+            <dt>SHA256</dt><dd><code><span class="tbd">校验值</span></code></dd>
+            <dt>提取码</dt><dd><span class="tbd">网盘提取码</span></dd>
+          </dl>
+          <div class="hero-actions">
+            <a class="btn is-disabled" aria-disabled="true" role="link">网盘下载（链接待提供）</a>
+            <a class="btn ghost is-disabled" aria-disabled="true" role="link">备用网盘（链接待提供）</a>
+          </div>
+        </div>
+        <div class="note">
+          <p><strong>免费版与正式版</strong>：<span class="tbd">是否在网站上说明</span></p>
+          <p class="muted">本站不提供购买、注册或登录。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 隐私与使用须知 -->
+  <section class="section" id="notice" aria-labelledby="notice-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="notice-title">隐私与使用须知</h2></div>
+      <div class="note warn">
+        <ul>
+          <li>截图只存在你自己的电脑上；只有红框里的作答会发给你选的 AI 服务商。<strong>不要把学生姓名框进红框。</strong></li>
+          <li>API Key 保存在系统钥匙串里，不写进文件。</li>
+          <li>AI 给的分数仅供参考，需要老师复核；标「需复核」的请到阅卷网页的回评里核对。删掉软件里的记录不会改动已经提交到网页上的分数。</li>
+          <li>请遵守学校和阅卷平台关于使用辅助工具的规定。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 常见问题与联系方式 -->
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-title">常见问题</h2></div>
+      <details>
+        <summary>试改以后网页没换到下一份？</summary>
+        <p>正常。试改只填分、不提交。在「改卷详情」点「改分提交」，或者自己在网页上提交，再试改下一份。</p>
+      </details>
+      <details>
+        <summary>截到空白页、AI 说作答是空的？</summary>
+        <p>网页还没加载完就截了。到「答题卡设置」把「换页等待」调大（2 秒左右）。</p>
+      </details>
+      <details>
+        <summary>改了几份就停下，说「平台没有换到下一份」？</summary>
+        <p>网页卡住了，或者已经没卷子了。看一眼网页；没问题的话检查蓝框是不是正好在提交按钮上。</p>
+      </details>
+      <details>
+        <summary>AI 出错：余额不足 / 402？</summary>
+        <p>到服务商官网充值。改卷会停下，已经改好的都保存了，充好值接着点开始改卷。</p>
+      </details>
+      <details>
+        <summary>快捷键没反应？</summary>
+        <p>Mac 要给终端「输入监控」权限，给完要完全退出终端再打开。快捷键可以在「系统设置 → 快捷键」里改。</p>
+      </details>
+      <details>
+        <summary>数据存在哪里？换电脑怎么办？</summary>
+        <p>Mac 在 <code>~/Library/Application Support/AI改卷/</code>（记录、截图、设置），换电脑时把这个文件夹拷过去就行；API Key 在系统钥匙串里，要重新粘贴。Windows：<span class="tbd">数据目录</span></p>
+      </details>
+      <div class="card" style="margin-top:20px">
+        <h3>联系方式</h3>
+        <p class="muted">问题反馈与建议：<span class="tbd">邮箱或公众号</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 北冥有鱼</span>
+    <span><a href="/">首页</a> · <a href="/software/">软件</a> · <a href="/yuwen/">语文学习</a></span>
+  </div>
+</footer>
+</body>
+</html>
