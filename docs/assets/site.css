@@ -228,3 +228,48 @@ pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .entry { transition: none; } }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .table-wrap td:first-child { white-space: nowrap; }
+
+/* 首页：主张、数据行、产品矩阵、板块分节 */
+/* 主张两句各 12 字：手机上按视口缩小字号，保证每句一行 */
+.hero h1.claim { font-size: clamp(20px, 7vw, 52px); max-width: none; letter-spacing: 0; }
+.hero h1 em, .product h2 em { font-style: normal; color: var(--accent); }
+.stats { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 720px; }
+.stats li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; flex-direction: column; }
+.stats strong { font-size: clamp(28px, 5vw, 36px); font-weight: 800; line-height: 1.1; color: var(--accent); }
+.stats span { font-size: 14px; color: var(--muted); }
+@media (min-width: 720px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+
+.label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.matrix .card { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--ink); transition: transform .15s ease, border-color .15s ease; }
+.matrix a.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.matrix .card h3 { margin: 0; font-size: 20px; }
+.matrix .card p { color: var(--muted); margin: 0; }
+.matrix .card img, .placeholder { border-radius: var(--radius-sm); border: 1px solid var(--line); aspect-ratio: 1200 / 780; object-fit: cover; object-position: top left; width: 100%; margin-top: 6px; }
+.matrix .go { margin-top: auto; padding-top: 6px; font-weight: 700; color: var(--accent); }
+.placeholder { display: grid; place-items: center; background: var(--bg-soft); border: 1px dashed var(--tbd-line); color: var(--muted); font-weight: 700; letter-spacing: .2em; }
+.card.is-soon { box-shadow: none; }
+.card.is-soon .label, .card.is-soon .go { color: var(--muted); }
+.soon { display: inline-block; vertical-align: middle; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: var(--tbd-ink); background: var(--tbd-bg); border: 1px dashed var(--tbd-line); }
+.app + .app { margin-top: 16px; }
+.app.is-soon .placeholder { margin-top: 0; aspect-ratio: auto; min-height: 160px; }
+
+.badges { margin-top: 14px; }
+.badges li { font-size: 14px; padding: 4px 12px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.product .shots { margin-top: 4px; }
+.split { display: grid; gap: 20px; align-items: center; }
+.split .section-head { margin-bottom: 0; }
+@media (min-width: 820px) { .split { grid-template-columns: 1fr 1.1fr; } }
+.shot { display: block; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+
+.foot .wrap > div { min-width: 0; }
+.foot p { margin: 4px 0 0; }
+.foot-brand { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .matrix .card { transition: none; } }
+/* 导航三项：最窄的手机上收紧间距，保持一行 */
+@media (max-width: 359px) {
+  .top .wrap { gap: 8px; }
+  .brand { font-size: 16px; gap: 8px; }
+  .brand img { width: 28px; height: 28px; }
+  .nav { gap: 0; }
+  .nav a { padding: 5px 6px; font-size: 14px; }
+}
