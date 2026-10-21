@@ -277,3 +277,96 @@ pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 
 }
 /* 顶栏是 sticky 的：页内跳转（如导航「AI 评测」→ #ai-eval）留出顶栏高度 */
 section[id] { scroll-margin-top: 60px; }
+
+/* ---------- 动效与质感 ----------
+   原则：只动 transform / opacity；悬停效果只给鼠标；「减少动态效果」时全部关掉；
+   滚动渐显由 site.js 加 .reveal，脚本不运行时内容照常显示。 */
+:root { --ease: cubic-bezier(.16, 1, .3, 1); --orb-a: 18%; --orb-b: 16%; --noise: .035; }
+@media (prefers-color-scheme: dark) { :root { --orb-a: 26%; --orb-b: 22%; --noise: .05; } }
+
+/* 背景：两团缓慢漂移的光斑（radial-gradient，不用 filter: blur） */
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.bg::before, .bg::after { content: ""; position: absolute; border-radius: 50%; will-change: transform; }
+.bg::before {
+  width: 70vmax; height: 70vmax; left: -22vmax; top: -30vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) var(--orb-a), transparent), transparent);
+  animation: orb-a 26s ease-in-out infinite alternate;
+}
+.bg::after {
+  width: 60vmax; height: 60vmax; right: -24vmax; top: 18vh;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--plum) var(--orb-b), transparent), transparent);
+  animation: orb-b 32s ease-in-out infinite alternate;
+}
+@keyframes orb-a { to { transform: translate3d(14vmax, 10vmax, 0) scale(1.15); } }
+@keyframes orb-b { to { transform: translate3d(-12vmax, 14vmax, 0) scale(1.1); } }
+/* 噪点：铺在背景色上，透明度单独控制；在 DOM 里先于 .bg，所以在光斑下面 */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: var(--noise);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+}
+
+/* 顶栏：在页顶时更通透，滚动后加阴影（.scrolled 由 site.js 切换） */
+.js .top { transition: background-color .3s, box-shadow .3s, border-color .3s; }
+.js .top:not(.scrolled) { background: color-mix(in srgb, var(--bg) 55%, transparent); border-bottom-color: transparent; }
+.top.scrolled { box-shadow: 0 6px 24px rgb(0 0 0 / 8%); }
+
+/* 首屏入场：一次性依次淡入 */
+.hero .wrap > * { animation: rise .8s var(--ease) both; }
+.hero .wrap > :nth-child(2) { animation-delay: .08s; }
+.hero .wrap > :nth-child(3) { animation-delay: .16s; }
+.hero .wrap > :nth-child(4) { animation-delay: .24s; }
+.hero .wrap > :nth-child(5) { animation-delay: .32s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* 滚动渐显 */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i, 0) * 60ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* 按钮：主按钮带一点品牌梅色的渐变 */
+.btn { transition: transform .25s var(--ease), box-shadow .25s var(--ease), background-color .2s, border-color .2s, filter .2s; }
+.btn:not(.ghost):not(.is-disabled) { background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 65%, var(--plum))); }
+.btn:not(.is-disabled):active { transform: scale(.97); }
+
+/* 卡片配图容器：圆角、边框、裁切都在容器上，图片可以在里面放大 */
+.media { display: block; position: relative; overflow: hidden; border-radius: var(--radius-sm); border: 1px solid var(--line); aspect-ratio: 1200 / 780; margin-top: 6px; background: #191729; }
+.media img { width: 100%; height: 100%; object-fit: cover; object-position: top left; border: 0; border-radius: 0; margin: 0; aspect-ratio: auto; transition: transform .6s var(--ease); }
+.matrix .card .media img { border: 0; border-radius: 0; margin: 0; aspect-ratio: auto; }
+.app .media { margin-top: 0; }
+.app .media img { border: 0; border-radius: 0; }
+.media.placeholder { display: grid; place-items: center; background: var(--bg-soft); border: 1px dashed var(--tbd-line); }
+
+/* AI 改卷卡片的截图轮播：几张图叠放，site.js 轮流加 .on */
+.stage img { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease, transform .6s var(--ease); }
+.stage img.on { opacity: 1; }
+
+/* 卡片聚光：鼠标位置写进 --mx / --my */
+.spot { position: relative; isolation: isolate; overflow: hidden; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 30%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%);
+  transition: opacity .35s;
+}
+.go .arrow { display: inline-block; transition: transform .25s var(--ease); }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:not(.is-disabled):hover { transform: translateY(-2px); filter: none; }
+  .btn:not(.ghost):not(.is-disabled):hover { box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .spot:hover::before { opacity: 1; }
+  .spot:hover .media img { transform: scale(1.04); }
+  .spot:hover .go .arrow { transform: translateX(4px); }
+  .app.spot:hover { transform: translateY(-2px); }
+  .app { transition: transform .15s ease, border-color .15s ease; }
+  .shots a img { transition: transform .6s var(--ease); }
+  .shots a:hover img { transform: scale(1.04); }
+  .stats li { transition: transform .25s var(--ease), border-color .25s; }
+  .stats li:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg::before, .bg::after, .hero .wrap > * { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .media img, .stage img, .go .arrow, .shots a img, .stats li, .app { transition: none; }
+  .btn:not(.is-disabled):hover, .app.spot:hover, .stats li:hover, .spot:hover .media img, .shots a:hover img, .spot:hover .go .arrow { transform: none; }
+}

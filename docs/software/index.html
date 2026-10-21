@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
 <a class="skip" href="#main">跳到正文</a>
 <header class="top">
   <div class="wrap">
@@ -34,13 +35,13 @@
 
   <section class="section" aria-label="软件列表">
     <div class="wrap">
-      <a class="card app" href="/software/ai-grader/">
-        <img src="/software/ai-grader/img/detail.webp" alt="AI 自动改卷的改卷详情页：左边是各得分点的分数，右边是 AI 评分过程" width="1200" height="780" loading="lazy">
+      <a class="card app spot" href="/software/ai-grader/">
+        <span class="media"><img src="/software/ai-grader/img/detail.webp" alt="AI 自动改卷的改卷详情页：左边是各得分点的分数，右边是 AI 评分过程" width="1200" height="780" loading="lazy"></span>
         <div>
           <h2>北冥有鱼 · AI 自动改卷</h2>
           <p class="muted">框住阅卷网页上学生的作答，AI 按你写的评分细则打分，再替你填分、提交，一份接一份地改。适用于 Mac 和 Windows。</p>
           <ul class="tags"><li>主观题</li><li>DeepSeek 等大模型</li><li>Mac · Windows</li></ul>
-          <p class="go" style="margin-top:14px">查看介绍与下载 →</p>
+          <p class="go" style="margin-top:14px">查看介绍与下载 <span class="arrow">→</span></p>
         </div>
       </a>
       <div class="card app is-soon" aria-disabled="true">
@@ -60,5 +61,6 @@
     <span><a href="/">首页</a> · <a href="/yuwen/">高考语文</a></span>
   </div>
 </footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

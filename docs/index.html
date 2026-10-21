@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
 <a class="skip" href="#main">跳到正文</a>
 <header class="top">
   <div class="wrap">
@@ -51,25 +52,29 @@
         <p>点一张卡片，进入完整介绍。</p>
       </div>
       <div class="grid three matrix">
-        <a class="card" href="/software/ai-grader/">
+        <a class="card spot" href="/software/ai-grader/">
           <span class="label">SOFTWARE · AI GRADING</span>
           <h3>北冥有鱼 · AI 自动改卷</h3>
           <p>框住阅卷网页上学生的作答，AI 按你写的评分细则打分，再替你填分、提交，一份接一份地改。</p>
-          <img src="/software/ai-grader/img/detail.webp" alt="AI 自动改卷的改卷详情页" width="1200" height="780" loading="lazy">
-          <span class="go">查看功能与下载 →</span>
+          <span class="media stage">
+            <img class="on" src="/software/ai-grader/img/detail.webp" alt="AI 自动改卷的界面截图" width="1200" height="780" loading="lazy">
+            <img src="/software/ai-grader/img/home.webp" alt="" width="1200" height="780" loading="lazy">
+            <img src="/software/ai-grader/img/rules.webp" alt="" width="1200" height="780" loading="lazy">
+          </span>
+          <span class="go">查看功能与下载 <span class="arrow">→</span></span>
         </a>
-        <a class="card" href="/yuwen/">
+        <a class="card spot" href="/yuwen/">
           <span class="label">WEBSITE · GAOKAO</span>
           <h3>高考语文</h3>
           <p>部编版高中语文五册课文，古诗文注释、译文与赏析，高考作文，学历案，课时练习与单元检测。</p>
-          <img src="/assets/img/yuwen.webp" alt="高考语文网站首页" width="1200" height="780" loading="lazy">
-          <span class="go">进入高考语文 →</span>
+          <span class="media"><img src="/assets/img/yuwen.webp" alt="高考语文网站首页" width="1200" height="780" loading="lazy"></span>
+          <span class="go">进入高考语文 <span class="arrow">→</span></span>
         </a>
         <div class="card is-soon" aria-disabled="true">
           <span class="label">SOFTWARE · 开发中</span>
           <h3>AI 评测系统 <span class="soon">开发中</span></h3>
           <p>考、练、评一体的测评系统。</p>
-          <div class="placeholder" aria-hidden="true">开发中</div>
+          <span class="media placeholder" aria-hidden="true">开发中</span>
           <span class="go">敬请期待</span>
         </div>
       </div>
@@ -151,5 +156,6 @@
     </div>
   </div>
 </footer>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
