@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>使用手册 · 北冥有鱼 AI 自动改卷</title>
+<meta name="description" content="北冥有鱼 AI 自动改卷使用手册：安装与权限、系统支持、使用流程、下载校验、常见问题、隐私须知与更新日志。">
+<meta property="og:title" content="北冥有鱼 · AI 自动改卷 · 使用手册">
+<meta property="og:description" content="安装、权限、使用流程、常见问题与更新日志。">
+<meta property="og:image" content="/software/ai-grader/img/detail.webp">
+<meta name="theme-color" content="#6450d6">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<a class="skip" href="#main">跳到正文</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="北冥有鱼 首页"><img src="/assets/logo.svg" alt="" width="32" height="32"><span class="brand-name">北冥有鱼</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/software/" aria-current="page">软件</a>
+      <a href="/yuwen/">高中语文</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">使用手册 · v0.1.2 试用版</span>
+      <h1>AI 自动改卷 · 使用手册</h1>
+      <p class="lead">安装与权限、系统支持、使用流程、常见问题和更新日志。</p>
+      <p class="muted">软件里显示的名字是「AI改卷」。当前是试用版 v0.1.2，支持 Apple 芯片的 Mac 和 64 位 Windows。</p>
+      <div class="hero-actions">
+        <a class="btn" href="/software/ai-grader/#download">去下载</a>
+        <a class="btn ghost" href="/software/ai-grader/">产品介绍</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <ul class="toc" aria-label="本页目录">
+      <li><a href="#install">安装</a></li>
+      <li><a href="#system">系统支持</a></li>
+      <li><a href="#how">使用流程</a></li>
+      <li><a href="#verify">下载与校验</a></li>
+      <li><a href="#faq">常见问题</a></li>
+      <li><a href="#notice">隐私与使用须知</a></li>
+      <li><a href="#changelog">更新日志</a></li>
+    </ul>
+  </div>
+
+  <section class="section" id="install" aria-labelledby="install-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="install-title">安装</h2>
+        <p>从<a href="/software/ai-grader/#download">下载区</a>拿到安装包后这样安装，不需要另装 Python 或其他工具。</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Mac</h3>
+          <p>解压 <code>AI-Grader-v0.1.2-macOS-arm64.zip</code>，把得到的 <code>AI改卷.app</code> 拖进「应用程序」，双击打开。</p>
+          <p class="muted">试用版还没有经过 Apple 公证，第一次打开会被系统拦住：到「系统设置 → 隐私与安全性」，在下方找到 AI改卷，点「仍要打开」。</p>
+        </div>
+        <div class="card">
+          <h3>Windows</h3>
+          <p>解压 <code>AI-Grader-v0.1.2-Windows-x64-Setup.exe.zip</code>，双击里面的 <code>AI-Grader-v0.1.2-Windows-x64-Setup.exe</code>，按「下一步」装好，桌面上会有图标。不需要管理员权限。</p>
+          <p class="muted">第一次运行如果弹出「Windows 已保护你的电脑」，点「更多信息 → 仍要运行」。卸载不会删掉设置和改卷记录。</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Mac 需要三项权限</h3>
+        <p class="muted">在「系统设置 → 隐私与安全性」里，给「AI改卷」打开下面三项，<strong>然后完全退出 AI改卷（⌘Q）再重新打开</strong>，权限才生效。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>权限</th><th>用来做什么</th></tr></thead>
+            <tbody>
+              <tr><td>屏幕录制</td><td>截学生的作答</td></tr>
+              <tr><td>辅助功能</td><td>点分数框、输入分数、点提交</td></tr>
+              <tr><td>输入监控</td><td>全局快捷键（第一次按快捷键时系统会问）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="system" aria-labelledby="system-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="system-title">系统支持</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">macOS</th><td>Apple 芯片（M 系列）的 Mac，macOS 14 或更新版本。</td></tr>
+            <tr><th scope="row">Windows</th><td>64 位 Windows 10（1809 或更新）和 Windows 11，已在 Windows 真机上测试（含显示缩放）。</td></tr>
+            <tr><th scope="row">AI 服务</th><td>需要联网，并自备一家大模型服务商的 API Key（默认 DeepSeek），模型要能识图。调用费用由你在服务商那里支付。支持的服务商：DeepSeek、通义千问、字节豆包、智谱、月之暗面 Kimi、MiniMax、小米 MiMo、OpenAI、Gemini、Claude，也可以填中转平台的地址。</td></tr>
+            <tr><th scope="row">阅卷网页</th><td>浏览器缩放保持 100%，不要全屏；改卷时网页所在的屏幕上不能有别的窗口挡住红框。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="how-title">使用流程</h2>
+        <p>第一次打开有新手引导，一步步带你做完。完整说明见软件里的「使用帮助 → 打开使用手册」。</p>
+      </div>
+      <ol class="steps">
+        <li><strong>连接 AI</strong><p>选服务商（默认 DeepSeek），粘贴自己的 API Key，点「测试连接」。Key 保存在系统的密码管理里，不写进文件。</p></li>
+        <li><strong>设置试卷</strong><p>新建题目，填年级、学科、满分、打分步长、分数框个数，以及本次要改几份。</p></li>
+        <li><strong>框选区域</strong><p>打开阅卷网页，把红框拖到学生作答上、绿框拖到分数框上、蓝框拖到提交按钮上。</p></li>
+        <li><strong>评分规则</strong><p>粘贴题目材料和评分细则，可加打分示例和参考图；「检查规则」会找出前后矛盾、说得含糊的地方，「优化评分细则」再据此起草一份细则，你核对后才采用。</p></li>
+        <li><strong>试改一份</strong><p>只改当前这一份，分数填进网页但不提交。看 AI 认的字、理由和得分点对不对，不满意就改细则。</p></li>
+        <li><strong>改分提交</strong><p>在「老师定分」里改成你认为对的分数，点「改分提交」，网页换到下一份。</p></li>
+        <li><strong>开始改卷</strong><p>点「开始改卷」或按快捷键，软件一份一份地改，改够份数自己停，并弹出这一批的小结。</p></li>
+      </ol>
+      <div class="note warn" style="margin-top:16px">
+        <p><strong>改卷时别动鼠标键盘、别切换窗口</strong>：软件在模拟鼠标键盘。要停就按快捷键（Mac 默认 ⌃⌥Q，Windows 默认 Alt+Q）。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="verify" aria-labelledby="verify-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="verify-title">下载与校验</h2>
+        <p>安装包放在蓝奏云，不用登录、不用输密码。本站不托管安装包。</p>
+      </div>
+      <div class="download">
+        <div class="note">
+          <p><strong>下载步骤</strong></p>
+          <ol>
+            <li>在<a href="/software/ai-grader/#download">下载区</a>点对应系统的按钮，打开蓝奏云的下载页，点最新版本的文件。</li>
+            <li>在下载页上点「下载」，浏览器开始下载 zip。</li>
+            <li>按上面的<a href="#install">「安装」</a>步骤解压、安装。</li>
+          </ol>
+        </div>
+        <div class="note">
+          <p><strong>免费版</strong>：软件提供免费版，下载后可以直接试用。</p>
+          <p class="muted">本站不提供购买、注册或登录。</p>
+        </div>
+      </div>
+      <details class="verify">
+        <summary>想核对安装包是否完整？（SHA256）</summary>
+        <p class="muted">下载后算一下文件的 SHA256，和下面的值一致就说明文件完整、没被改过。Windows 先解压，核对里面的 Setup.exe。</p>
+        <dl class="meta">
+          <dt>Mac</dt><dd><code>AI-Grader-v0.1.2-macOS-arm64.zip</code><br><code class="hash">cabede7ed805ffc63a9cb530aa15f83fe9d4b443024f7f1066937226593941e1</code></dd>
+          <dt>Windows</dt><dd><code>AI-Grader-v0.1.2-Windows-x64-Setup.exe</code><br><code class="hash">703224ca98edd67ae22de071cfd2f291972319d8320c3ef2ea3c6e51a770a8f8</code></dd>
+        </dl>
+        <p class="muted">Mac 在「终端」里运行：</p>
+        <pre><code>shasum -a 256 ~/Downloads/AI-Grader-v0.1.2-macOS-arm64.zip</code></pre>
+        <p class="muted">Windows 在「命令提示符」里运行（换成文件实际所在的位置）：</p>
+        <pre><code>certutil -hashfile "%USERPROFILE%\Downloads\AI-Grader-v0.1.2-Windows-x64-Setup.exe" SHA256</code></pre>
+      </details>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-title">常见问题</h2></div>
+      <details>
+        <summary>试改以后网页没换到下一份？</summary>
+        <p>正常。试改只填分、不提交。在「改卷详情」点「改分提交」，或者自己在网页上提交，再试改下一份。</p>
+      </details>
+      <details>
+        <summary>截到空白页、AI 说作答是空的？</summary>
+        <p>网页还没加载完就截了。到「答题卡设置」把「换页等待」调大（2 秒左右）。</p>
+      </details>
+      <details>
+        <summary>改了几份就停下，说「平台没有换到下一份」？</summary>
+        <p>网页卡住了，或者已经没卷子了。看一眼网页；没问题的话检查蓝框是不是正好在提交按钮上。</p>
+      </details>
+      <details>
+        <summary>AI 出错：余额不足 / 402？</summary>
+        <p>到服务商官网充值。改卷会停下，已经改好的都保存了，充好值接着点开始改卷。</p>
+      </details>
+      <details>
+        <summary>快捷键没反应？</summary>
+        <p>Mac 要给 AI改卷「输入监控」权限，给完要完全退出 AI改卷 再打开。快捷键可以在软件的「系统设置 → 快捷键」里改。</p>
+      </details>
+      <details>
+        <summary>数据存在哪里？换电脑怎么办？</summary>
+        <p>Mac 在 <code>~/Library/Application Support/AI改卷/</code>（记录、截图、设置），换电脑时把这个文件夹拷过去就行；API Key 在系统钥匙串里，要重新粘贴。Windows 在 <code>%LOCALAPPDATA%\AI改卷\</code>（一般是 <code>C:\Users\用户名\AppData\Local\AI改卷\</code>），同样整个拷过去；API Key 在 Windows 凭据管理器里，也要重新粘贴。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="notice" aria-labelledby="notice-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="notice-title">隐私与使用须知</h2></div>
+      <div class="note warn">
+        <ul>
+          <li>截图只存在你自己的电脑上；只有红框里的作答会发给你选的 AI 服务商。<strong>不要把学生姓名框进红框。</strong></li>
+          <li>API Key 保存在系统的密码管理里（Mac 钥匙串、Windows 凭据管理器），不写进文件。</li>
+          <li>AI 给的分数仅供参考，需要老师复核；标「需复核」的请到阅卷网页的回评里核对。删掉软件里的记录不会改动已经提交到网页上的分数。</li>
+          <li>请遵守学校和阅卷平台关于使用辅助工具的规定。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="changelog" aria-labelledby="changelog-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="changelog-title">版本与更新日志</h2>
+        <p>当前是试用版 v0.1.2。前面是试用版的更新，后面是试用之前的开发记录。</p>
+      </div>
+      <ol class="log">
+        <li><time datetime="2026-10-23">2026-10-23</time> · v0.1.2 试用版
+          <ul><li>评分规则支持公式和表格：编辑框可以切到「预览」看排好版的公式和表格；从网页、Word、Excel 粘贴的表格自动变成表格；「符号」面板插常用符号和公式模板</li><li>截图识别：框选屏幕上 PDF、Word 里的标准答案和细则，AI 转成带公式、表格的文字，核对后插入（要用能识图的模型）</li><li>各学科都能用：评分时按学科补充阅卷规矩（理科步骤分、等价答案、单位、有效数字；英语；史地政）；「检查规则」会重算标准答案、查公式写法；「优化评分细则」保留公式，理科按步骤列分</li><li>改卷详情、改卷小窗和改卷记录里，公式也排好版显示；学生作答和理由里的换行照原样显示</li><li>题型加了证明题、实验题、作图题、推断题、书面表达、翻译</li></ul></li>
+        <li><time datetime="2026-10-22">2026-10-22</time> · v0.1.1 试用版
+          <ul><li>Windows 改成安装程序：双击 Setup.exe，按「下一步」就装好，桌面有图标；不需要管理员权限；卸载不删设置和改卷记录</li></ul></li>
+        <li><time datetime="2026-10-21">2026-10-21</time> · v0.1.0 试用版
+          <ul><li>第一个试用安装包：Apple 芯片 Mac 和 64 位 Windows</li></ul></li>
+        <li><time datetime="2026-10-20">2026-10-20</time>
+          <ul><li>评分规则页新增「优化评分细则」：结合「检查规则」找出的问题起草细则，老师核对后才采用</li><li>新增本题得分统计：平均分、最高最低分、分数分布图</li><li>打分步长支持 0.25 分</li><li>改过卷的题参数自动锁住，防止误改</li><li>改卷时工作台保持显示，停在改卷详情</li></ul></li>
+        <li><time datetime="2026-10-17">2026-10-17</time>
+          <ul><li>Windows 真机测试通过，支持显示缩放下的截图和点击</li></ul></li>
+        <li><time datetime="2026-10-16">2026-10-16</time>
+          <ul><li>「AI 评分过程」边写边显示</li><li>新增新手引导和使用手册（可导出 PDF）</li><li>AI 配置：服务商图标、一键粘贴 Key、去官网申请 Key</li></ul></li>
+        <li><time datetime="2026-10-14">2026-10-14</time>
+          <ul><li>识别核对：两轮认出的作答对不上、看不清、引用对不上时标「需复核」</li><li>试改一份、收进打分示例（高 中 低 正 错）</li><li>改卷小窗下方显示改卷详情</li></ul></li>
+        <li><time datetime="2026-10-13">2026-10-13</time>
+          <ul><li>界面调整：通栏顶栏、侧栏可以换到右边</li><li>提交后核对网页是否换页，模型接口出错时停下并说明原因</li></ul></li>
+        <li><time datetime="2026-10-12">2026-10-12</time>
+          <ul><li>图形界面：工作台 + 改卷小窗、三个标记框</li></ul></li>
+        <li><time datetime="2026-10-11">2026-10-11</time>
+          <ul><li>开始开发：模型接入、多评合成、导出 Excel</li></ul></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-panel">
+        <h2 id="cta-title">准备好了就下载</h2>
+        <p class="muted">问题反馈与建议：微信 <strong>xiongmaker</strong></p>
+        <div class="hero-actions">
+          <a class="btn" href="/software/ai-grader/#download">去下载</a>
+          <a class="btn ghost" href="/software/ai-grader/">返回产品介绍</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 北冥有鱼</span>
+    <span><a href="/">首页</a> · <a href="/software/">软件</a> · <a href="/yuwen/">高中语文</a></span>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
