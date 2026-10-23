@@ -249,8 +249,8 @@ pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 
 @media (min-width: 720px) { .stats { grid-template-columns: repeat(4, 1fr); } }
 
 .label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-.matrix .card { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--ink); transition: transform .15s ease, border-color .15s ease; }
-.matrix a.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.matrix .card { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--ink); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+.matrix a.card:hover { border-color: var(--accent); }
 .matrix .card h3 { margin: 0; font-size: 20px; }
 .matrix .card p { color: var(--muted); margin: 0; }
 .matrix .card img, .placeholder { border-radius: var(--radius-sm); border: 1px solid var(--line); aspect-ratio: 1200 / 780; object-fit: cover; object-position: top left; width: 100%; margin-top: 6px; }
@@ -305,8 +305,8 @@ section[id], .card[id] { scroll-margin-top: 72px; }
 /* ---------- 动效与质感 ----------
    原则：只动 transform / opacity；悬停效果只给鼠标；「减少动态效果」时全部关掉；
    滚动渐显由 site.js 加 .reveal，脚本不运行时内容照常显示。 */
-:root { --ease: cubic-bezier(.16, 1, .3, 1); --orb-a: 18%; --orb-b: 16%; --noise: .035; }
-@media (prefers-color-scheme: dark) { :root { --orb-a: 26%; --orb-b: 22%; --noise: .05; } }
+:root { --ease: cubic-bezier(.16, 1, .3, 1); --orb-a: 18%; --orb-b: 16%; --noise: .035; --glow: 9%; --shadow-lift: 0 2px 4px rgb(29 26 46 / 6%), 0 18px 40px rgb(100 80 214 / 16%); }
+@media (prefers-color-scheme: dark) { :root { --orb-a: 26%; --orb-b: 22%; --noise: .05; --glow: 12%; --shadow-lift: 0 2px 4px rgb(0 0 0 / 35%), 0 18px 40px rgb(0 0 0 / 45%); } }
 
 /* 背景：两团缓慢漂移的光斑（radial-gradient，不用 filter: blur） */
 .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
@@ -380,8 +380,8 @@ body::before {
   .spot:hover::before { opacity: 1; }
   .spot:hover .media img { transform: scale(1.04); }
   .spot:hover .go .arrow { transform: translateX(4px); }
-  .app.spot:hover { transform: translateY(-2px); }
-  .app { transition: transform .15s ease, border-color .15s ease; }
+  .app { transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+  .card.spot:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
   .shots a img { transition: transform .6s var(--ease); }
   .shots a:hover img { transform: scale(1.04); }
   .stats li { transition: transform .25s var(--ease), border-color .25s; }
@@ -392,5 +392,35 @@ body::before {
   .bg::before, .bg::after, .hero .wrap > * { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .media img, .stage img, .go .arrow, .shots a img, .stats li, .app { transition: none; }
-  .btn:not(.is-disabled):hover, .app.spot:hover, .stats li:hover, .spot:hover .media img, .shots a:hover img, .spot:hover .go .arrow { transform: none; }
+  .btn:not(.is-disabled):hover, .card.spot:hover, .card.spot:focus-visible, .stats li:hover, .spot:hover .media img, .shots a:hover img, .spot:hover .go .arrow { transform: none; }
 }
+
+/* 卡片抬升也给键盘用户：Tab 到卡片上时和鼠标悬停一样（减少动态效果时只留阴影） */
+.card.spot:focus-visible { box-shadow: var(--shadow-lift); border-color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) { .card.spot:focus-visible { transform: translateY(-4px); } }
+
+/* ---------- 交互动效（fx.js） ----------
+   圆环和光晕只在有鼠标、没开「减少动态效果」时由脚本插入；都不接收点击。 */
+/* 外层只管位置（transform 由脚本写），圆环画在 ::after 上，放大缩小不影响位置 */
+.cursor { position: fixed; left: 0; top: 0; z-index: 100; width: 0; height: 0; pointer-events: none; opacity: 0; will-change: transform; transition: opacity .3s; }
+.cursor::after {
+  content: ""; position: absolute; left: -15px; top: -15px; width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  transition: scale .3s var(--ease), background-color .3s, border-color .3s;
+}
+.cursor.on { opacity: 1; }
+.cursor.is-hot::after { scale: 1.6; background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.cursor.is-down::after { scale: .85; }
+.cursor.is-hot.is-down::after { scale: 1.35; }
+/* 光晕：一个跟着鼠标走的大圆，在背景光斑之上、正文之下 */
+.glow {
+  position: fixed; left: 0; top: 0; z-index: -1; width: 1040px; height: 1040px; margin: -520px 0 0 -520px;
+  border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform; transition: opacity .6s;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) var(--glow), transparent), transparent);
+}
+.glow.on { opacity: 1; }
+/* 首页首屏星空：画布垫在首屏内容下面 */
+.hero[data-stars] { position: relative; }
+.hero[data-stars] > .wrap { position: relative; z-index: 1; }
+.stars { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+@media print { .cursor, .glow, .stars { display: none; } }
