@@ -274,7 +274,7 @@ pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 
 .foot p { margin: 4px 0 0; }
 .foot-brand { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .matrix .card { transition: none; } }
-/* 导航四项：窄屏上收紧间距、只留 logo，保持一行 */
+/* 导航三项：窄屏上收紧间距、只留 logo，保持一行 */
 @media (max-width: 479px) {
   .brand-name { display: none; }
   .nav a { padding: 6px 8px; }
@@ -286,8 +286,8 @@ pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 
   .nav { gap: 0; }
   .nav a { padding: 5px 6px; font-size: 14px; }
 }
-/* 顶栏是 sticky 的：页内跳转（如导航「AI 评测」→ #ai-eval）留出顶栏高度 */
-section[id] { scroll-margin-top: 60px; }
+/* 顶栏是 sticky 的：页内跳转（如 /#ai-eval）留出顶栏高度 */
+section[id], .card[id] { scroll-margin-top: 72px; }
 
 /* ---------- 动效与质感 ----------
    原则：只动 transform / opacity；悬停效果只给鼠标；「减少动态效果」时全部关掉；
