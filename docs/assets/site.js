@@ -76,7 +76,7 @@
     });
   }
 
-  // 下载区：认出 Mac / Windows，标出对应卡片并让首屏「下载」直达；提取码可一键复制
+  // 下载区：认出 Mac / Windows，标出对应卡片并让首屏「下载」直达
   const mac = document.getElementById('download-mac');
   const win = document.getElementById('download-win');
   if (mac && win) {
@@ -92,19 +92,5 @@
         hero.textContent = mine === mac ? '下载 Mac 版' : '下载 Windows 版';
       }
     }
-    document.querySelectorAll('.copy[data-copy]').forEach((btn) => {
-      btn.hidden = false;
-      btn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(btn.dataset.copy);
-          btn.textContent = '已复制';
-        } catch {
-          // 剪贴板不可用（如非 HTTPS）时选中提取码，方便手动复制
-          getSelection().selectAllChildren(btn.previousElementSibling);
-          btn.textContent = '已选中';
-        }
-        setTimeout(() => { btn.textContent = '复制'; }, 1600);
-      });
-    });
   }
 })();
