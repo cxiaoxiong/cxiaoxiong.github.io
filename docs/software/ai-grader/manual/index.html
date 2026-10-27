@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>使用手册 · 北冥有鱼 AI 自动改卷</title>
-<meta name="description" content="北冥有鱼 AI 自动改卷使用手册：安装与权限、系统支持、使用流程、下载校验、常见问题、隐私须知与更新日志。">
+<meta name="description" content="北冥有鱼 AI 自动改卷使用手册：安装与权限、系统支持、使用流程、下载、常见问题、隐私须知与更新日志。">
 <meta property="og:title" content="北冥有鱼 · AI 自动改卷 · 使用手册">
 <meta property="og:description" content="安装、权限、使用流程、常见问题与更新日志。">
 <meta property="og:image" content="/software/ai-grader/img/detail.webp">
@@ -30,10 +30,10 @@
 <main id="main">
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">使用手册 · v0.1.2 试用版</span>
+      <span class="eyebrow">使用手册 · v0.1.5 试用版</span>
       <h1>AI 自动改卷 · 使用手册</h1>
       <p class="lead">安装与权限、系统支持、使用流程、常见问题和更新日志。</p>
-      <p class="muted">软件里显示的名字是「AI改卷」。当前是试用版 v0.1.2，支持 Apple 芯片的 Mac 和 64 位 Windows。</p>
+      <p class="muted">软件里显示的名字是「AI改卷」。当前是试用版 v0.1.5，支持 Apple 芯片的 Mac 和 64 位 Windows。</p>
       <div class="hero-actions">
         <a class="btn" href="/software/ai-grader/#download">去下载</a>
         <a class="btn ghost" href="/software/ai-grader/">产品介绍</a>
@@ -46,7 +46,7 @@
       <li><a href="#install">安装</a></li>
       <li><a href="#system">系统支持</a></li>
       <li><a href="#how">使用流程</a></li>
-      <li><a href="#verify">下载与校验</a></li>
+      <li><a href="#verify">下载</a></li>
       <li><a href="#faq">常见问题</a></li>
       <li><a href="#notice">隐私与使用须知</a></li>
       <li><a href="#changelog">更新日志</a></li>
@@ -62,12 +62,12 @@
       <div class="grid two">
         <div class="card">
           <h3>Mac</h3>
-          <p>解压 <code>AI-Grader-v0.1.2-macOS-arm64.zip</code>，把得到的 <code>AI改卷.app</code> 拖进「应用程序」，双击打开。</p>
+          <p>下载 v0.1.5 的 Mac 安装包并解压，把得到的 <code>AI改卷.app</code> 拖进「应用程序」，双击打开。</p>
           <p class="muted">试用版还没有经过 Apple 公证，第一次打开会被系统拦住：到「系统设置 → 隐私与安全性」，在下方找到 AI改卷，点「仍要打开」。</p>
         </div>
         <div class="card">
           <h3>Windows</h3>
-          <p>解压 <code>AI-Grader-v0.1.2-Windows-x64-Setup.exe.zip</code>，双击里面的 <code>AI-Grader-v0.1.2-Windows-x64-Setup.exe</code>，按「下一步」装好，桌面上会有图标。不需要管理员权限。</p>
+          <p>下载 v0.1.5 的 Windows 安装包；如果下载的是 zip 文件，先解压，再双击文件名以 <code>Setup.exe</code> 结尾的安装程序，按「下一步」装好，桌面上会有图标。不需要管理员权限。</p>
           <p class="muted">第一次运行如果弹出「Windows 已保护你的电脑」，点「更多信息 → 仍要运行」。卸载不会删掉设置和改卷记录。</p>
         </div>
       </div>
@@ -130,16 +130,16 @@
   <section class="section" id="verify" aria-labelledby="verify-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="verify-title">下载与校验</h2>
+        <h2 id="verify-title">下载</h2>
         <p>安装包放在蓝奏云，不用登录、不用输密码。本站不托管安装包。</p>
       </div>
       <div class="download">
         <div class="note">
           <p><strong>下载步骤</strong></p>
           <ol>
-            <li>在<a href="/software/ai-grader/#download">下载区</a>点对应系统的按钮，打开蓝奏云的下载页，点最新版本的文件。</li>
-            <li>在下载页上点「下载」，浏览器开始下载 zip。</li>
-            <li>按上面的<a href="#install">「安装」</a>步骤解压、安装。</li>
+            <li>在<a href="/software/ai-grader/#download">下载区</a>点对应系统的按钮，打开蓝奏云的下载页，选择 v0.1.5 的文件。</li>
+            <li>在下载页上点「下载」，浏览器开始下载安装包。</li>
+            <li>按上面的<a href="#install">「安装」</a>步骤操作。</li>
           </ol>
         </div>
         <div class="note">
@@ -147,18 +147,6 @@
           <p class="muted">本站不提供购买、注册或登录。</p>
         </div>
       </div>
-      <details class="verify">
-        <summary>想核对安装包是否完整？（SHA256）</summary>
-        <p class="muted">下载后算一下文件的 SHA256，和下面的值一致就说明文件完整、没被改过。Windows 先解压，核对里面的 Setup.exe。</p>
-        <dl class="meta">
-          <dt>Mac</dt><dd><code>AI-Grader-v0.1.2-macOS-arm64.zip</code><br><code class="hash">cabede7ed805ffc63a9cb530aa15f83fe9d4b443024f7f1066937226593941e1</code></dd>
-          <dt>Windows</dt><dd><code>AI-Grader-v0.1.2-Windows-x64-Setup.exe</code><br><code class="hash">703224ca98edd67ae22de071cfd2f291972319d8320c3ef2ea3c6e51a770a8f8</code></dd>
-        </dl>
-        <p class="muted">Mac 在「终端」里运行：</p>
-        <pre><code>shasum -a 256 ~/Downloads/AI-Grader-v0.1.2-macOS-arm64.zip</code></pre>
-        <p class="muted">Windows 在「命令提示符」里运行（换成文件实际所在的位置）：</p>
-        <pre><code>certutil -hashfile "%USERPROFILE%\Downloads\AI-Grader-v0.1.2-Windows-x64-Setup.exe" SHA256</code></pre>
-      </details>
     </div>
   </section>
 
@@ -210,7 +198,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2 id="changelog-title">版本与更新日志</h2>
-        <p>当前是试用版 v0.1.2。前面是试用版的更新，后面是试用之前的开发记录。</p>
+        <p>当前下载区提供试用版 v0.1.5。以下保留此前版本的更新与开发记录。</p>
       </div>
       <ol class="log">
         <li><time datetime="2026-10-23">2026-10-23</time> · v0.1.2 试用版
